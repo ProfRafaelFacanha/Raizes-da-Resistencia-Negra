@@ -211,6 +211,9 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
 .bv-pant{flex:0 0 auto}
 .bv-svg{width:84px;height:84px;display:block}
 .bv-tx{font-size:14.5px;line-height:1.45;color:var(--fg)}
+.bv-link{cursor:pointer}
+.bv-cta{display:block;color:var(--accent);font-weight:800;margin-top:7px}
+.bv-link:hover .bv-cta{text-decoration:underline}
 .bv-tx span{display:block;color:var(--muted);margin-top:3px}
 @media(max-width:380px){.bv-svg{width:66px;height:66px}}
 .chaeninho{cursor:pointer}
@@ -320,8 +323,9 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
   <section class="screen active" id="memoria-home">
     <div class="boasvindas">
       <div class="bv-pant chae-wrap"><div class="pant m-awake bv-inner chaeninho" role="button" tabindex="0" aria-label="Falar com o Chaeninho"><svg class="pant-svg" viewBox="0 0 120 120" role="img" aria-label="Chaeninho, a pantera-guia"><path class="p-tail" d="M84 104 Q110 100 106 74 Q103 60 90 65" fill="none" stroke="#1b1b1b" stroke-width="11" stroke-linecap="round"/><ellipse cx="60" cy="96" rx="28" ry="23" fill="#1d1d1d"/><ellipse cx="60" cy="101" rx="14" ry="12" fill="#2d2622" opacity=".4"/><ellipse cx="45" cy="115" rx="9" ry="6.5" fill="#121212"/><ellipse cx="75" cy="115" rx="9" ry="6.5" fill="#121212"/><path d="M48 116 Q48 103 54 103 Q60 103 60 116 Z" fill="#121212"/><path d="M60 116 Q60 103 66 103 Q72 103 72 116 Z" fill="#121212"/><path d="M54 109 v6 M66 109 v6" fill="none" stroke="#000" stroke-width="1" opacity=".3"/><circle cx="60" cy="50" r="33" fill="#202020"/><path d="M38 24 L34 6 L54 18 Z" fill="#1d1d1d"/><path d="M41.5 19 L41 9 L49 16 Z" fill="#43372f"/><path d="M82 24 L86 6 L66 18 Z" fill="#1d1d1d"/><path d="M78.5 19 L79 9 L71 16 Z" fill="#43372f"/><circle cx="40" cy="60" r="7" fill="#E07B3A" opacity=".22"/><circle cx="80" cy="60" r="7" fill="#E07B3A" opacity=".22"/><g class="p-eyes-closed"><path d="M41 51 Q48 45 55 51" fill="none" stroke="#F0C85E" stroke-width="3" stroke-linecap="round"/><path d="M65 51 Q72 45 79 51" fill="none" stroke="#F0C85E" stroke-width="3" stroke-linecap="round"/></g><g class="p-eyes-open"><ellipse cx="48" cy="50" rx="8" ry="9.5" fill="#F0C85E"/><ellipse cx="72" cy="50" rx="8" ry="9.5" fill="#F0C85E"/><circle cx="48" cy="52" r="4.8" fill="#141414"/><circle cx="72" cy="52" r="4.8" fill="#141414"/><circle cx="50.4" cy="48.6" r="2" fill="#fff"/><circle cx="74.4" cy="48.6" r="2" fill="#fff"/></g><g class="p-joy"><path d="M41 55 Q48 61 55 55 Z" fill="#202020"/><path d="M65 55 Q72 61 79 55 Z" fill="#202020"/></g><path d="M57 59 L63 59 L60 63 Z" fill="#D98A7A"/><path class="p-smile" d="M60 63 Q56 67 53 64 M60 63 Q64 67 67 64" fill="none" stroke="#2a211d" stroke-width="2" stroke-linecap="round"/><g class="p-grin"><path d="M48 63 Q60 73 72 63" fill="none" stroke="#2a211d" stroke-width="2.6" stroke-linecap="round"/><path d="M54 63.5 l2 3.4 2 -3.4 Z" fill="#fff" stroke="#2a211d" stroke-width=".4" stroke-linejoin="round"/><path d="M64 63.5 l2 3.4 2 -3.4 Z" fill="#fff" stroke="#2a211d" stroke-width=".4" stroke-linejoin="round"/></g><g stroke="#6a5e52" stroke-width="1.3" stroke-linecap="round" opacity=".55"><path d="M34 62 L22 60"/><path d="M34 66 L23 69"/><path d="M86 62 L98 60"/><path d="M86 66 L97 69"/></g><g class="p-zzz" fill="#8F7016" font-family="Georgia,serif" font-weight="700"><text x="86" y="28" font-size="13">z</text><text x="95" y="17" font-size="17">Z</text></g><g class="p-spark" fill="#F0C85E"><path d="M16 46 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 Z"/><path d="M104 50 l1.6 4 4 1.6 -4 1.6 -1.6 4 -1.6 -4 -4 -1.6 4 -1.6 Z"/><path d="M60 6 l1.5 3.8 3.8 1.5 -3.8 1.5 -1.5 3.8 -1.5 -3.8 -3.8 -1.5 3.8 -1.5 Z"/></g></svg></div></div>
-      <div class="bv-tx"><b>Oi! Eu sou o Chaeninho!</b>
-      <span>Sou a pantera-guia deste mural! Explore as três abas, abra os links das histórias e me ajude a despertar &mdash; cada descoberta vira ponto e troféu. &#128062;</span></div>
+      <div class="bv-tx bv-link" id="bv-tx" data-go="r1" role="button" tabindex="0" aria-label="Começar pela primeira raiz"><b>Oi! Eu sou o Chaeninho!</b>
+      <span>Sou a pantera-guia deste mural! São três abas para explorar: abra os links contidos nos conteúdos e alcance seus objetivos &mdash; cada descoberta vira ponto e troféu, e me ajuda a despertar. &#128062;</span>
+      <span class="bv-cta" id="bv-cta">Toque aqui para começar &#8594;</span></div>
     </div>
     <div class="hero">
       <p class="eyebrow">Para refletir</p>
@@ -448,6 +452,7 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
         +'<div class="tf-n">'+t.nome+'</div><div class="tf-d">'+t.desc+'</div></div>';}).join('');}
     var pr=document.getElementById('premio'); if(pr){pr.hidden = tot<75;}
     renderResume();
+    updateWelcomeCta();
     renderMascote();
   }
   function renderMascote(){
@@ -468,6 +473,13 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
     });
   }
   function activePendingId(){for(var k in prog.pending){return k;}return '';}
+  function updateWelcomeCta(){
+    var cta=document.getElementById('bv-cta'), tx=document.getElementById('bv-tx'); if(!cta||!tx)return;
+    var act=activePendingId();
+    if(act){ cta.textContent='Continuar de onde parou →'; tx.setAttribute('data-go',act); }
+    else if(total()>0){ cta.textContent='Continuar de onde parou →'; tx.setAttribute('data-go','fig-home'); }
+    else { cta.textContent='Toque aqui para começar →'; tx.setAttribute('data-go','r1'); }
+  }
   function renderResume(){
     var r=document.getElementById('resume'); if(!r)return;
     var act=activePendingId();
@@ -565,14 +577,14 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
   document.addEventListener('click',function(e){
     var a=e.target.closest('.task-link'); if(!a)return;
     var id=a.getAttribute('data-task');
-    if(id && !isDone(id) && !prog.pending[id] && !activePendingId()){ prog.pending[id]=Date.now(); saveProg(); renderTaskBtn(id); }
+    if(id && !isDone(id) && !prog.pending[id] && !activePendingId()){ prog.pending[id]=Date.now(); saveProg(); renderTaskBtn(id); updateWelcomeCta(); }
   });
   // botão da tarefa: inicia (itens sem link) ou registra quando liberado
   document.addEventListener('click',function(e){
     var tb=e.target.closest('.task-btn'); if(!tb)return;
     var id=tb.id.slice(3);
     if(isDone(id))return;
-    if(!prog.pending[id]){ if(activePendingId())return; prog.pending[id]=Date.now(); saveProg(); renderTaskBtn(id); return; }
+    if(!prog.pending[id]){ if(activePendingId())return; prog.pending[id]=Date.now(); saveProg(); renderTaskBtn(id); updateWelcomeCta(); return; }
     if(Date.now()-prog.pending[id]>=READ_MS){ completeItem(id); }
   });
   // compartilhar o troféu de diamante no WhatsApp da escola
@@ -591,7 +603,11 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
     if(e.target.closest('.chaeninho')||e.target.closest('#mini-mascote')){ showPop(); return; }
     if(chaePop && !chaePop.hidden && !e.target.closest('#chae-pop')){ hidePop(); }
   });
-  document.addEventListener('keydown',function(e){ if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('chaeninho')){ e.preventDefault(); showPop(); } });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Enter'&&e.key!==' ')return;
+    if(e.target.classList&&e.target.classList.contains('chaeninho')){ e.preventDefault(); showPop(); return; }
+    var g=e.target.closest&&e.target.closest('[data-go]'); if(g){ e.preventDefault(); show(g.getAttribute('data-go')); }
+  });
   // relógio: conclui leituras e atualiza a contagem visível
   setInterval(function(){ if(currentId && prog.pending[currentId] && !isDone(currentId)) renderTaskBtn(currentId); if(currentId==='conquistas-home') renderResume(); },1000);
   window.addEventListener('hashchange',function(){show((location.hash||'').replace('#','')||MEM_HOME,false);});
