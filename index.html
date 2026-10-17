@@ -148,6 +148,7 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
   color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 12px;font-weight:800;font-size:13px;
   cursor:pointer;font-variant-numeric:tabular-nums}
 .score-badge:hover{background:rgba(255,255,255,.28)}
+.score-badge.complete{background:var(--gold);border-color:var(--gold);color:#fff}
 .vsabia{display:block;width:100%;text-align:left;background:color-mix(in srgb,var(--gold) 15%,var(--surface));
   border:1px solid color-mix(in srgb,var(--gold) 45%,var(--line));border-radius:13px;padding:13px 15px;margin:2px 0 14px;
   box-shadow:var(--shadow);cursor:pointer}
@@ -353,9 +354,9 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
     <div class="trofeu-grid" id="trofeu-grid"></div>
     <div class="premio" id="premio" hidden>
       <div class="premio-ic">&#127942;</div>
-      <div class="premio-tx"><b>Você despertou a Consciência &mdash; 60 de 60!</b>
-      <span>Os <b>10 primeiros</b> a compartilhar este troféu no <b>WhatsApp da escola</b> ganham um <b>brinde</b>. Toque no botão abaixo e envie para a turma.</span></div>
-      <button class="btn btn-share2" id="share-premio" type="button">Compartilhar no WhatsApp &#8599;</button>
+      <div class="premio-tx"><b>Parab&eacute;ns! Voc&ecirc; conquistou os 6 trof&eacute;us (60/60).</b>
+      <span>Agora voc&ecirc; pode enviar sua <b>comprova&ccedil;&atilde;o</b> no <b>WhatsApp da escola</b> &mdash; os <b>10 primeiros</b> ganham um <b>brinde</b>. Dica: tire um <b>print desta tela</b> mostrando os 6 trof&eacute;us e mande junto com a mensagem.</span></div>
+      <button class="btn btn-share2" id="share-premio" type="button">&#128241; Enviar comprova&ccedil;&atilde;o no WhatsApp &#8599;</button>
     </div>
     <button class="reset-link" id="reset-prog" type="button">Reiniciar meu progresso neste aparelho</button>
     <div class="reset-confirm" id="reset-confirm" hidden>
@@ -422,7 +423,7 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
     {id:'t5',need:50,nome:'Na rota de Harriet',desc:'50 pontos — quase lá, levando a turma junto.'},
     {id:'t6',need:60,nome:'Consciência desperta',desc:'60 de 60! Compartilhe e concorra ao brinde.'}
   ];
-  function updateBadge(){var el=document.getElementById('score-n'); if(el){el.textContent=total();}}
+  function updateBadge(){var el=document.getElementById('score-n'); if(el){el.textContent=total();} var bb=document.getElementById('score-badge'); if(bb){bb.classList.toggle('complete',total()>=60);}}
   function toast(msg){var t=document.getElementById('toast'); if(!t)return; t.textContent=msg; t.hidden=false;
     requestAnimationFrame(function(){t.classList.add('show');});
     clearTimeout(window.__tt); window.__tt=setTimeout(function(){t.classList.remove('show');
@@ -496,10 +497,12 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
   }
   function completeItem(id){
     if(isDone(id))return;
+    var before=total();
     if(id.charAt(0)==='f')prog.fig[id.slice(2)]=1; else prog.marco[id.slice(2)]=1;
     delete prog.pending[id]; saveProg();
     updateBadge(); checkTrofeus(false); renderConquistas(); refreshSeen(); renderTaskBtn(id);
-    toast('Descoberta registrada: +1 ponto');
+    if(total()>=60 && before<60){ toast('Tudo completo! Envie sua comprovacao em Pontuacao e Trofeus'); }
+    else { toast('Descoberta registrada: +1 ponto'); }
   }
   function onEnter(id){
     if(id.indexOf('f-')===0||id.indexOf('d-')===0){ renderTaskBtn(id); }
@@ -573,7 +576,8 @@ footer p{margin:0 0 7px;font-size:12.5px;color:var(--muted);max-width:70ch}
   // compartilhar o troféu de diamante no WhatsApp da escola
   var sp=document.getElementById('share-premio');
   if(sp){sp.addEventListener('click',function(){
-    var msg=encodeURIComponent('Completei o Mural da Consciência Negra: 60 de 60 descobertas, troféu "Consciência desperta"! 🐾🏆 — Raízes da Resistência Negra');
+    var nomes=TROFEUS.map(function(t){return t.nome;}).join(', ');
+    var msg=encodeURIComponent('Comprovação — Mural da Consciência Negra 🏆 • Conclui os 6 troféus: '+nomes+'. • 30/30 figuras e 30/30 marcos descobertos. • (Envio também o print da tela como comprovação.)');
     var url=ESCOLA_WA?('https://wa.me/'+ESCOLA_WA+'?text='+msg):('https://wa.me/?text='+msg);
     window.open(url,'_blank','noopener');
   });}
